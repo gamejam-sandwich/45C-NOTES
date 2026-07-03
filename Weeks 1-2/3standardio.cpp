@@ -39,7 +39,7 @@ void input_alt()
 int main()
 {
     outputting();
-    inputting();
+    //inputting();
     input_alt();
     return 0;
 }
