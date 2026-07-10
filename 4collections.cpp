@@ -1,6 +1,20 @@
 #include <iostream>
 #include <vector>
+#include <unordered_map>
+#include <unordered_set>
 using namespace std;
+
+
+void checker(unordered_set<char> set, char letter) {
+    // This will be used for sets example later
+    // Checks if a char is in the unordered set
+    if (set.find(letter) == set.end()) {
+        cout << "letter " << letter << " is not in the set." << endl;
+    }
+    else {
+        cout << "letter " << letter << " is in the set." << endl;
+    }
+}
 
 int main(){
     cout << "---ARRAYS---" << endl;
@@ -24,6 +38,7 @@ int main(){
         cout << otherdata[i]<< endl;
         cout << "add:" << &otherdata[i] << endl;
     }
+
 
     cout << "---VECTORS---" << endl;
     // More similar to Python lists than arrays
@@ -55,8 +70,69 @@ int main(){
     }
     cout << "It grows automatically but exponentially" << endl;
 
+
     cout << "---STRINGS---" << endl;
+    char cppchar = 'a';  // char values use single quotes
+    string cppstring = "Hello World!";  // strings use double quotes
+    char cstring[] = {"Hello World!"};  // cstring aka char array
+    // Examples
+    cout << cppstring[0] << " is the first character\n";
+    cppstring[0] = 'h';
+    cout << cppstring[0] << " is now the first character\n";
+    string otherstring = " I'm Bob";
+    cout << cppstring + otherstring + "\n";  // Concatenating strings
+    cout << cppstring.append(otherstring) + "\n";  // Append str to end of string
+    otherstring.push_back('!');  // Append char to end of string
+    cout << otherstring + "\n";
+    otherstring.pop_back();  // Deletes the last char
+    cout << otherstring + "\n";
+    otherstring.insert(0, "Hello,");
+    cout << otherstring + "\n";
+    otherstring.erase(0, 7);  // Erase from index a to index b
+    cout << otherstring + "\n";
+    cout << "o first appears at index " << otherstring.find('o');
+    cout << "\n" << otherstring.size() << endl;
+
+    cout << "---HASH TABLES---" << endl;
+    /*
+    Hash table: collection of items with key and value
+    Hash function: returns location of associated value when given key
+    Unordered map: C++ version of dictionaries
+    */
+    unordered_map<string, string> spnumbers;
+    // one maps to uno, two maps to dos, etc.
+    spnumbers = { {"one", "uno"}, {"two", "dos"} };
+    spnumbers["three"] = "tres";
+    spnumbers["four"] = "cuatro";
+    cout << "one is " << spnumbers["one"] << endl;
+    cout << spnumbers.size() << endl;
     
+    for (auto i=spnumbers.begin(); i!=spnumbers.end(); i++){
+        // auto automaticaly detects datatype
+        // when a variable is declared
+        cout << i->first << ": ";
+        cout << i->second << endl;
+    }
+
+    unordered_map<string, string> mymap;
+    mymap = { {"apple", "red"}, {"kumquat", "orange"} };
+    cout << mymap["apple"] << endl;  // Outputs value associated with key
+    cout << "apple appears " << mymap.count("apple");
+    cout << " times\n";
+    mymap.erase("apple");  // No more apples
+    // These two are used for traversal (as seen above)
+    mymap.begin();  // Creates iterator pointing to first element
+    mymap.end();  // Points to theoretical element after last element
+
+
+    cout << "---UNORDERED SET---" <<endl;
+    // Items in set are immutable but can be inserted/removed
+    // No duplicates allowed
+    unordered_set<char> charSet = {'d', 'c', 'b', 'a'};
+    char letter = 'e';
+    checker(charSet, letter);
+    charSet.insert('e');
+    checker(charSet, letter);
 
     return 0;
 }
