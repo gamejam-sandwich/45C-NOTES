@@ -2,7 +2,7 @@
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #66ebf0;
+    background-color: beige;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(198, 222, 60, 0.2);
 }
@@ -17,11 +17,21 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
+#code {
+    background: #1e1e1e;
+    color: lime;
+    padding: 12px;
+    border-radius: 6px;
+    font-family: Consolas, "Courier New", monospace;
+    overflow-x: auto;   /* long lines scroll instead of breaking the layout */
+    text-align: left;
+}
+
 button {
     display: block;
     margin: 0 auto;
     padding: 10px 20px;
-    background-color: rgb((227, 238, 10), 245, 161);
+    background-color: lightcyan;
     color: #131313;
     border: none;
     border-radius: 5px;
@@ -29,7 +39,7 @@ button {
 }
 
 button:hover {
-    background-color: 8f8d8d;
+    background-color: lightblue;
 }
 
 .correct { background-color: green; color: white; }
