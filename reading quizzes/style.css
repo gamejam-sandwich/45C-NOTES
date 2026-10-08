@@ -45,3 +45,7 @@ button:hover {
 .correct { background-color: green; color: white; }
 .wrong   { background-color: red; color: white; }
 button:disabled { cursor: default; }
+
+.selected {
+    outline: 3px solid #2196f3;
+}

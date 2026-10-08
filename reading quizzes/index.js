@@ -2,9 +2,9 @@
 //TODO: figure out the import stuff
 const quizData = [
     {
-        question: "What operator gives a variable’s memory address in C++?",
-        options: ["it depends upon the implementation", "the symbol &", " the symbol id", " the symbol *"],
-        answer: "the symbol &"
+        question: "What operator gives a variable's memory address in C++?",
+        options: ["it depends upon the implementation", "the symbol &", "the symbol id", "the symbol *"],
+        answer: ["the symbol &"]
     },
 
     {
@@ -12,7 +12,7 @@ const quizData = [
         code: `string A[] =
         {"what", "is", "the", "size", "of", "this", "array?"};`,
         options: ["const char *", "char", "char[]", "std::string"],
-        answer: "std::string"
+        answer: ["std::string"]
     },
 
     {
@@ -28,7 +28,7 @@ const quizData = [
 9 }`,
 
     options: ["a memory address, such as 0x7fffeb17da34 which may vary each time the program is run", "1", "compile error because foo was not initialized", "77"],
-    answer: "a memory address, such as 0x7fffeb17da34 which may vary each time the program is run"
+    answer: ["a memory address, such as 0x7fffeb17da34 which may vary each time the program is run"]
     },
 
     {
@@ -42,7 +42,7 @@ const quizData = [
     cout << A[3];
 }`,
     options: ["The program prints 10", "The program prints 7.5", "A contains 10 double elements over its entire lifetime", "A contains 10 double elements at first but may be reallocated to a different size any time"],
-    answer: "The program prints 7.5"
+    answer: ["The program prints 7.5", "A contains 10 double elements over its entire lifetime"]
     },
 ];
 
@@ -53,19 +53,24 @@ const nextBtn = document.getElementById("next");
 
 let currentQuestion = 0;
 let score = 0;
+let mode = "answering";  // answering, checking, done
 
 nextBtn.addEventListener("click", () => {
-    currentQuestion++;
-    if (currentQuestion < quizData.length) {
-        showQuestion();
+    if (mode === "answering") {
+        submitAnswer();
+    } else if (mode === "checking") {
+        goToNext();
     } else {
-        showResult();
+        restartQuiz();
     }
 });
 
 function showQuestion() {
-    nextBtn.style.display = "none";
-    // Set the question
+    mode = "answering";
+    nextBtn.innerText = "Submit";
+    nextBtn.style.display = "block";
+    nextBtn.disabled = true;
+
     const question = quizData[currentQuestion];
     questionElement.innerText = question.question;
 
@@ -76,41 +81,73 @@ function showQuestion() {
         codeElement.style.display = "none";
     }
 
-    // Creating buttons for each option
     optionsElement.innerHTML = "";
     question.options.forEach(option => {
         const button = document.createElement("button");
         button.innerText = option;
+        button.dataset.value = option;
+        button.addEventListener("click", toggleSelect);
         optionsElement.appendChild(button);
-        button.addEventListener("click", selectAnswer);
     });
 }
 
-function selectAnswer(e) {
-    const selectedButton = e.target;
-    const answer = quizData[currentQuestion].answer;
+function toggleSelect(e) {
+    e.currentTarget.classList.toggle("selected");
+    const anySelected = optionsElement.querySelector(".selected") !== null;
+    nextBtn.disabled = !anySelected;
+}
 
-    // Check if the answer is correct
-    Array.from(optionsElement.children).forEach(button => {
-        if (button.innerText === answer) {
+function submitAnswer() {
+    const answer = quizData[currentQuestion].answer;
+    const buttons = Array.from(optionsElement.querySelectorAll("button"));
+
+    const selected = buttons
+        .filter(button => button.classList.contains("selected"))
+        .map(button => button.dataset.value);
+    
+        const noWrong = selected.every(value => answer.includes(value));
+        const noMiss = answer.every(value => selected.includes(value));
+
+        if (noWrong && noMiss) {
+            score ++;
+        }
+    
+        buttons.forEach(button => {
+        if (answer.includes(button.dataset.value)) {
             button.classList.add("correct");
+        } else if (button.classList.contains("selected")) {
+            button.classList.add("wrong");
         }
         button.disabled = true;
     });
 
-    if (selectedButton.innerText === answer) {
-        score++;
+
+        mode = "checking";
+        nextBtn.innerText = "Next";
+}
+
+function goToNext() {
+    currentQuestion++;
+    if (currentQuestion < quizData.length) {
+        showQuestion();
     } else {
-        selectedButton.classList.add("wrong");
+        showResult();
     }
-    nextBtn.style.display = "block";
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    showQuestion();
 }
 
 function showResult() {
+    mode = "done";
     questionElement.innerText = "Quiz complete";
     optionsElement.innerHTML = `<p>Your score: ${score}/${quizData.length}</p>`;
     codeElement.style.display = "none";
-    nextBtn.style.display = "none";
+    nextBtn.innerText = "Try again";
+    nextBtn.disabled = false;
 }
 
 showQuestion();
