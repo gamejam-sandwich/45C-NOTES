@@ -1,13 +1,33 @@
-import { quizData } from "./questions.js";
+//import { quizData } from "./questions.js";
+import { quiz1 } from "./quiz1_questions.js";
+import { quiz2 } from "./quiz2_questions.js";
 
+const QUIZZES = {
+    week1: { title: "RQ W1", questions: quiz1 },
+    week2: { title: "RQ W2", questions: quiz2 },
+}
+
+const quizSelect = document.getElementById("quiz-select");
 const questionElement = document.getElementById("question");
 const optionsElement = document.getElementById("options");
 const codeElement = document.getElementById("code");
 const nextBtn = document.getElementById("next");
 
+let quizData = [];
 let currentQuestion = 0;
 let score = 0;
 let mode = "answering";  // answering, checking, done
+
+for (const [key, quiz] of Object.entries(QUIZZES)) {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = quiz.title;
+    quizSelect.appendChild(option);
+}
+
+quizSelect.addEventListener("change", () => {
+    loadQuiz(quizSelect.value);
+})
 
 nextBtn.addEventListener("click", () => {
     if (mode === "answering") {
@@ -18,6 +38,11 @@ nextBtn.addEventListener("click", () => {
         restartQuiz();
     }
 });
+
+function loadQuiz(key) {
+    quizData = QUIZZES[key].questions;
+    restartQuiz();
+}
 
 function showQuestion() {
     mode = "answering";
@@ -104,4 +129,4 @@ function showResult() {
     nextBtn.disabled = false;
 }
 
-showQuestion();
+loadQuiz(quizSelect.value);
