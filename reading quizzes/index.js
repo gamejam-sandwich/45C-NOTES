@@ -1,4 +1,3 @@
-//import { quizData } from "./questions.js";
 import { quiz1 } from "./quiz1_questions.js";
 import { quiz2 } from "./quiz2_questions.js";
 
