@@ -4,6 +4,7 @@ import { quiz2 } from "./quiz2_questions.js";
 const QUIZZES = {
     week1: { title: "RQ W1", questions: quiz1 },
     week2: { title: "RQ W2", questions: quiz2 },
+    week3: { title: "RQ W3", questions: quiz3 },
 }
 
 const quizSelect = document.getElementById("quiz-select");
