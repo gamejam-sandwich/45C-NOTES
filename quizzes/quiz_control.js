@@ -1,5 +1,6 @@
 import { quiz1 } from "./quiz1_questions.js";
 import { quiz2 } from "./quiz2_questions.js";
+import { quiz3 } from "./quiz3_questions.js";
 
 const QUIZZES = {
     week1: { title: "RQ W1", questions: quiz1 },

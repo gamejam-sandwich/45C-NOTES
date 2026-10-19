@@ -122,6 +122,28 @@ void pointerArithmetic() {
     std::cout << "New address - 1 is back to original: " << ptr << '\n';
 }
 
+void cStyleStrings() {
+    char name[50] {"meredith"};
+    std::cout << "\nMy name is " << std::strlen(name) << " chars long\n";
+    std::cout << "The name array has " << std::size(name) << " chars\n";
+
+    char original[] { "I'm the original! Too great for you to hold.!" };
+    char copy[5];
+    std::strcpy(copy, original);
+    // This will print the original, but it also corrupted
+    // the memory due to array overflow. Don't do this.
+    std::cout << copy << '\n';
+
+    char dish[10] { "Linguini" };
+    std::cout << "I just cooked some " << dish << '\n';
+    dish[5] = 'a';  // Subscript the array to modify
+    std::cout << dish << '\n';
+
+    char phrase[20] {"Hello World"};
+    phrase[5] = '\0';  // You can insert the null character too
+    for (int i=0; phrase[i] != '\0'; ++i) std::cout << phrase[i];
+}
+
 int main() {
     //strings();
     std::cout << "My major is " << getMajor() << "\n";
@@ -129,5 +151,6 @@ int main() {
     arrays();
     pointerArithmetic();
     arrays();
+    cStyleStrings();
     return 0;
 }
