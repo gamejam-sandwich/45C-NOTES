@@ -1,11 +1,13 @@
 import { quiz1 } from "./quiz1_questions.js";
 import { quiz2 } from "./quiz2_questions.js";
 import { quiz3 } from "./quiz3_questions.js";
+import { quiz4 } from "./quiz4_questions.js";
 
 const QUIZZES = {
     week1: { title: "RQ W1", questions: quiz1 },
     week2: { title: "RQ W2", questions: quiz2 },
     week3: { title: "RQ W3", questions: quiz3 },
+    week4: { title: "RQ W4", questions: quiz4 },
 }
 
 const quizSelect = document.getElementById("quiz-select");
