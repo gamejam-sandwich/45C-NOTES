@@ -14,7 +14,12 @@ export const quiz7 = [
 
     {
         question: "How do you handle an exception in C++?",
-        options: ["By using the assert keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception", "none of the other choices", "By using the try keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception", "By using the if keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception"],
+        options: [
+            "By using the assert keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception",
+            "none of the other choices",
+            "By using the try keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception",
+            "By using the if keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception"
+        ],
         answer: ["By using the try keyword followed by a block of code that may throw an exception, and one or more catch clauses to handle the exception"]
     },
 
@@ -38,13 +43,23 @@ export const quiz7 = [
 
     {
         question: "How do you instantiate a template class in C++?",
-        options: ["By using the typename keyword followed by the template class name and template arguments in angle brackets", "By creating a new object of the template class with the template arguments specified in angle brackets after the class name", "none of the other choices", "By using the new keyword followed by the template class name and template arguments in angle brackets"],
+        options: [
+            "By using the typename keyword followed by the template class name and template arguments in angle brackets",
+            "By creating a new object of the template class with the template arguments specified in angle brackets after the class name",
+            "none of the other choices",
+            "By using the new keyword followed by the template class name and template arguments in angle brackets"
+        ],
         answer: ["By creating a new object of the template class with the template arguments specified in angle brackets after the class name"]
     },
 
     {
         question: "How do you define a template class in C++?",
-        options: ["By using the typename keyword before the class name", "By using the template keyword followed by the template parameter list and then class keyword followed by the class name", "By using the class keyword followed by the template parameter list and then the class name", "none of the other choices"],
+        options: [
+            "By using the typename keyword before the class name",
+            "By using the template keyword followed by the template parameter list and then class keyword followed by the class name",
+            "By using the class keyword followed by the template parameter list and then the class name",
+            "none of the other choices"
+        ],
         answer: ["By using the template keyword followed by the template parameter list and then class keyword followed by the class name"]
     },
 
@@ -68,14 +83,26 @@ export const quiz7 = [
 
     {
         question: "SELECT ALL statements that are true of string streams:",
-        options: ["string streams are connected to a different I/O channel than cout and cin", "string streams are used to process data line by line", "str can be used to set the value of the stringstream buffer", "string streams can convert strings to ints or doubles", "string streams do not work with the << and >> operators", "Like cout and cin, string streams hold data in a buffer."],
-        answer: ["string streams are used to process data line by line", "str can be used to set the value of the stringstream buffer", "string streams can convert strings to ints or doubles", "Like cout and cin, string streams hold data in a buffer."]
+        options: [
+            "string streams are connected to a different I/O channel than cout and cin",
+            "string streams are used to process data line by line",
+            "str can be used to set the value of the stringstream buffer",
+            "string streams can convert strings to ints or doubles",
+            "string streams do not work with the << and >> operators",
+            "Like cout and cin, string streams hold data in a buffer."
+        ],
+        answer: [
+            "string streams are used to process data line by line",
+            "str can be used to set the value of the stringstream buffer",
+            "string streams can convert strings to ints or doubles",
+            "Like cout and cin, string streams hold data in a buffer."
+        ]
     },
 
     {
         question: "What is the syntax for calling a lambda in C++?",
-        options: ["none of the other choices", "By passing the lambda as a parameter to another function", "By using the call keyword followed by the lambda expression", "By using the function call notation fn() with the lambda as the function fn"],
-        answer: ["By using the function call notation fn() with the lambda as the function fn"]
+        options: ["none of the other choices", "By passing the lambda as a parameter to another function", "By using the call keyword followed by the lambda expression", "By using the function call notation fn () with the lambda as the function fn"],
+        answer: ["By using the function call notation fn () with the lambda as the function fn"]
     },
 
     {
@@ -110,8 +137,18 @@ export const quiz7 = [
 
     {
         question: "SELECT ALL the following statements that are true.",
-        options: ["The noexcept keyword is used to promise not to throw exceptions visible to the caller", "If an unhandled exception would exit a noexcept function, std::terminate will be called.", "It's up to the programmer to make sure that exceptions are not thrown by functions that should not throw them", "void noexcept doSomething() is valid syntax to define a non-throwing function", "noexcept prevents the function from throwing exceptions or calling other functions that potentially throw exceptions"],
-        answer: ["The noexcept keyword is used to promise not to throw exceptions visible to the caller", "If an unhandled exception would exit a noexcept function, std::terminate will be called.", "It's up to the programmer to make sure that exceptions are not thrown by functions that should not throw them"]
+        options: [
+            "The noexcept keyword is used to promise not to throw exceptions visible to the caller",
+            "If an unhandled exception would exit a noexcept function, std::terminate will be called.",
+            "It’s up to the programmer to make sure that exceptions are not thrown by functions that should not throw them",
+            "void noexcept doSomething() is valid syntax to define a non-throwing function",
+            "noexcept prevents the function from throwing exceptions or calling other functions that potentially throw exceptions"
+        ],
+        answer: [
+            "The noexcept keyword is used to promise not to throw exceptions visible to the caller",
+            "If an unhandled exception would exit a noexcept function, std::terminate will be called.",
+            "It’s up to the programmer to make sure that exceptions are not thrown by functions that should not throw them"
+        ]
     },
 
     {
@@ -164,7 +201,12 @@ export const quiz7 = [
 
     {
         question: "SELECT ALL the statements that are true.",
-        options: ["A friend can access the this pointer.", "Both functions and classes can be declared as friend", "Overuse of friends violates encapsulation", "In order to make a member function a friend, the compiler only needs to have seen a forward declaration."],
+        options: [
+            "A friend can access the this pointer.",
+            "Both functions and classes can be declared as friend",
+            "Overuse of friends violates encapsulation",
+            "In order to make a member function a friend, the compiler only needs to have seen a forward declaration."
+        ],
         answer: ["Both functions and classes can be declared as friend", "Overuse of friends violates encapsulation"]
     },
 
@@ -176,7 +218,12 @@ export const quiz7 = [
 
     {
         question: "How does a try/catch block work in C++?",
-        options: ["none of the other choices", "The try block contains code that may throw an exception, and the catch block contains code to handle the exception if one is thrown while executing the code in the try", "The catch block contains code that may throw an exception, and the try block contains code to handle the exception if one is thrown", "The try and catch blocks are interchangeable, and can be used in any order"],
+        options: [
+            "none of the other choices",
+            "The try block contains code that may throw an exception, and the catch block contains code to handle the exception if one is thrown while executing the code in the try",
+            "The catch block contains code that may throw an exception, and the try block contains code to handle the exception if one is thrown",
+            "The try and catch blocks are interchangeable, and can be used in any order"
+        ],
         answer: ["The try block contains code that may throw an exception, and the catch block contains code to handle the exception if one is thrown while executing the code in the try"]
     },
 ];
